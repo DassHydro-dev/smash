@@ -16,10 +16,9 @@ import warnings
 import errno
 
 from typing import TYPE_CHECKING
-from smash._typing import Numeric
 
 if TYPE_CHECKING:
-    from smash._typing import AnyTuple
+    from smash._typing import AnyTuple, Numeric
     from smash.core.model.model import Model
     from smash.fcore._mwd_setup import SetupDT
 
@@ -170,7 +169,7 @@ def _standardize_opr_final_states_key(model: Model, key: str) -> str:
 def _standardize_opr_parameters_value(
     model: Model, key: str, value: Numeric | np.ndarray
 ) -> Numeric | np.ndarray:
-    if not isinstance(value, (Numeric, np.ndarray)):
+    if not isinstance(value, (int, float, np.ndarray)):
         raise TypeError(
             f"value argument must be of Numeric type (int, float) or np.ndarray"
         )
@@ -197,7 +196,7 @@ def _standardize_opr_parameters_value(
 def _standardize_opr_states_value(
     model: Model, key: str, value: Numeric | np.ndarray
 ) -> Numeric | np.ndarray:
-    if not isinstance(value, (Numeric, np.ndarray)):
+    if not isinstance(value, (int, float, np.ndarray)):
         raise TypeError(
             f"value argument must be of Numeric type (int, float) or np.ndarray"
         )

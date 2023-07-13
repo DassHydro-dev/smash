@@ -9,14 +9,13 @@ import os
 from osgeo import gdal
 
 from typing import TYPE_CHECKING
-from smash._typing import FilePath, ListLike, Numeric, AlphaNumeric
 
 if TYPE_CHECKING:
-    from smash._typing import AnyTuple
+    from smash._typing import AnyTuple, FilePath, ListLike, Numeric, AlphaNumeric
 
 
 def _standardize_generate_mesh_flwdir_path(flwdir_path: FilePath) -> str:
-    if not isinstance(flwdir_path, FilePath):
+    if not isinstance(flwdir_path, (str, os.PathLike)):
         raise TypeError(
             f"flwdir_path argument must be of FilePath type (str, PathLike[str])"
         )
@@ -34,7 +33,7 @@ def _standardize_generate_mesh_bbox(
 ) -> np.ndarray:
     # % Bounding Box (xmin, xmax, ymin, ymax)
 
-    if not isinstance(bbox, ListLike):
+    if not isinstance(bbox, (list, tuple)):
         raise TypeError("bbox argument must be of ListLike type (List, Tuple)")
 
     bbox = np.array(bbox)
@@ -87,17 +86,17 @@ def _standardize_generate_mesh_x_y_area(
     y: Numeric | ListLike,
     area: Numeric | ListLike,
 ) -> Tuple[np.ndarray]:
-    if not isinstance(x, (Numeric, ListLike)):
+    if not isinstance(x, (int, float, list, tuple)):
         raise TypeError(
             "x argument must be of Numeric type (int, float) or ListLike type (List, Tuple)"
         )
 
-    if not isinstance(y, (Numeric, ListLike)):
+    if not isinstance(y, (int, float, list, tuple)):
         raise TypeError(
             "y argument must be of Numeric type (int, float) or ListLike type (List, Tuple)"
         )
 
-    if not isinstance(area, (Numeric, ListLike)):
+    if not isinstance(area, (int, float, list, tuple)):
         raise TypeError(
             "area argument must be of Numeric type (int, float) or ListLike type (List, Tuple)"
         )
@@ -132,7 +131,7 @@ def _standardize_generate_mesh_code(
         code = np.array([f"_c{i}" for i in range(x.size)])
 
     else:
-        if not isinstance(code, (str, ListLike)):
+        if not isinstance(code, (str, list, tuple)):
             raise TypeError(
                 "code argument must be a str or ListLike type (List, Tuple)"
             )
@@ -148,7 +147,7 @@ def _standardize_generate_mesh_code(
 
 
 def _standardize_generate_mesh_max_depth(max_depth: Numeric) -> int:
-    if not isinstance(max_depth, Numeric):
+    if not isinstance(max_depth, (int, float)):
         raise TypeError("max_depth argument must be of Numeric type (int, float)")
 
     max_depth = int(max_depth)
@@ -164,7 +163,7 @@ def _standardize_generate_mesh_epsg(epsg: AlphaNumeric | None) -> int:
         pass
 
     else:
-        if not isinstance(epsg, AlphaNumeric):
+        if not isinstance(epsg, (str, int, float)):
             raise TypeError(
                 "epsg argument must be of AlphaNumeric type (str, int, float)"
             )

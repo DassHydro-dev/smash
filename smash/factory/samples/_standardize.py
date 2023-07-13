@@ -6,12 +6,10 @@ import warnings
 
 import numpy as np
 
-from smash._typing import Numeric
-
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from smash._typing import AnyTuple
+    from smash._typing import AnyTuple, Numeric
 
 
 # TODO: Check bounds, parameters name
@@ -48,7 +46,7 @@ def _standardize_generate_samples_generator(problem: dict, generator: str) -> st
 
 
 def _standardize_generate_samples_n(n: Numeric) -> int:
-    if not isinstance(n, Numeric):
+    if not isinstance(n, (int, float)):
         raise TypeError("n argument must be of Numeric type (int, float)")
 
     n = int(n)
@@ -64,7 +62,7 @@ def _standardize_generate_samples_random_state(random_state: Numeric | None) -> 
         pass
 
     else:
-        if not isinstance(random_state, Numeric):
+        if not isinstance(random_state, (int, float)):
             raise TypeError(
                 "random_state argument must be of Numeric type (int, float)"
             )
@@ -93,7 +91,7 @@ def _standardize_generate_samples_mean(problem: dict, mean: dict | None) -> dict
                     f"Key '{name}' does not match any existing names in the problem definition {problem['names']}"
                 )
 
-            if isinstance(um, Numeric):
+            if isinstance(um, (int, float)):
                 default_mean.update({name: um})
 
             else:
@@ -109,7 +107,7 @@ def _standardize_generate_samples_coef_std(coef_std: Numeric | None) -> float:
         coef_std = 3.0
 
     else:
-        if not isinstance(coef_std, Numeric):
+        if not isinstance(coef_std, (int, float)):
             raise TypeError("coef_std argument must be of Numeric type (int, float)")
 
         coef_stf = float(coef_std)

@@ -1,14 +1,12 @@
 # required dependencies
 f90wrap
-numpy>=1.13
+numpy>=1.25
 pandas
-matplotlib
-h5py
+matplotlib  # (optional: only used for plotting and visualization)
+h5py>=3.9
 tqdm
-gdal
 scipy
 pyyaml
-SALib>=1.4.5
 terminaltables
 
 # documentation
