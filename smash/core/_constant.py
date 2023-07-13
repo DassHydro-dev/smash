@@ -14,8 +14,8 @@ import numpy as np
 
 STRUCTURE_PARAMETERS = {
     "gr-a": ["cp", "cft", "exc", "lr"],
-    "gr-b": ["cp", "cft", "exc", "lr"],
-    "gr-c": ["cp", "cft", "cst", "exc", "lr"],
+    "gr-b": ["ci", "cp", "cft", "exc", "lr"],
+    "gr-c": ["ci", "cp", "cft", "cst", "exc", "lr"],
     "gr-d": ["cp", "cft", "lr"],
     "vic-a": ["b", "cusl1", "cusl2", "clsl", "ks", "ds", "dsm", "ws", "lr"],
 }

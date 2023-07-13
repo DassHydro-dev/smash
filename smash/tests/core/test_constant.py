@@ -21,10 +21,10 @@ def test_structure_parameters():
     assert STRUCTURE_PARAMETERS["gr-a"] == ["cp", "cft", "exc", "lr"]
 
     # % Check parameters gr-b
-    assert STRUCTURE_PARAMETERS["gr-b"] == ["cp", "cft", "exc", "lr"]
+    assert STRUCTURE_PARAMETERS["gr-b"] == ["ci", "cp", "cft", "exc", "lr"]
 
     # % Check parameters gr-c
-    assert STRUCTURE_PARAMETERS["gr-c"] == ["cp", "cft", "cst", "exc", "lr"]
+    assert STRUCTURE_PARAMETERS["gr-c"] == ["ci", "cp", "cft", "cst", "exc", "lr"]
 
     # % Check parameters gr-d
     assert STRUCTURE_PARAMETERS["gr-d"] == ["cp", "cft", "lr"]

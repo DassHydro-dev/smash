@@ -7,6 +7,7 @@ from smash.core._constant import (
     WGAUGE_ALIAS,
     STRUCTURE_PARAMETERS,
     STRUCTURE_STATES,
+    STRUCTURE_ADJUST_CI,
     JOBS_FUN,
     JREG_FUN,
     AUTO_WJREG,
@@ -120,7 +121,9 @@ def _standardize_control_vector(
 ) -> np.ndarray:
     if control_vector is None:
         control_vector = np.array(STRUCTURE_PARAMETERS[setup.structure])
-
+        if STRUCTURE_ADJUST_CI[setup.structure]:
+            if "ci" in control_vector:
+                control_vector.remove("ci")
     else:
         if isinstance(control_vector, str):
             control_vector = np.array(control_vector, ndmin=1)

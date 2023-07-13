@@ -1,0 +1,47 @@
+.. _release.0.5.1-notes:
+
+.. currentmodule:: smash
+
+=========================
+smash 0.5.1 Release Notes
+=========================
+
+The smash 0.5.1 fix bugs and clarify the documentation.
+
+------------
+Contributors
+------------
+
+This release was made possible thanks to the contributions of:
+
+- Maxime Jay-Allemand
+- Ngo Nghi Truyen Huynh
+- François Colleoni
+
+------------
+Deprecations
+------------
+
+------------
+Improvements
+------------
+
+Missing documentation API for functions hdf5_handler, hdf5_io and object_handler #46
+************************************************************************************
+
+The documentation API was missing for the new functions for reading and writting hdf5 files added in release 0.5.0. This has been corrected.
+
+------------
+New Features
+------------
+
+-----
+Fixes
+-----
+
+Missing interception parameters ci in constant parameters #45
+*************************************************************
+
+Ci was missing in the parameter constant list and can't be saved and post processed or retrieved at all. This is fixed now.
+
+
